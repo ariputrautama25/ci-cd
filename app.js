@@ -4,12 +4,13 @@ const app = express();
 const morgan = require("morgan");
 const router = require("./routes");
 const cors = require("cors");
-const Sentry = require("@/sentry/node");
+const Sentry = require("@sentry/node");
 
-const { SENTRY_DSN, ENVIRONMENT } = proces.env;
+const { SENTRY_DSN, ENVIRONMENT } = process.env;
 
 Sentry.init({
-  dsn: "https://bc3bdb0b2018447083a913a9fd7c6721@o4505210778091520.ingest.sentry.io/4505210803060736",
+  environment: ENVIRONMENT,
+  dsn: SENTRY_DSN,
   integrations: [
     new Sentry.Integrations.Http({ tracing: true }),
     new Sentry.Integrations.Express({ app }),
