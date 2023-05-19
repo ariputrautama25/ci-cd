@@ -4,9 +4,9 @@ const app = express();
 const morgan = require("morgan");
 const router = require("./routes");
 const cors = require("cors");
-const Sentry = require("@sentry/node");
+const Sentry = require("@/sentry/node");
 
-const { SENTRY_DSN, ENVIRONMENT } = process.env;
+const { SENTRY_DSN, ENVIRONMENT } = proces.env;
 
 Sentry.init({
   environment: ENVIRONMENT,
